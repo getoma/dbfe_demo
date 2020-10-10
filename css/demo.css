@@ -1,0 +1,277 @@
+/********************************************************************************************
+ * generic definitons - screens
+ ********************************************************************************************/
+body
+{
+	font-family: "sans-serif normal";
+}
+
+@media screen
+{	
+	.ok
+	{ border: 2px solid #595
+	; padding: 5px
+	; color: #020
+	; background-color: #9F9
+	}
+	
+	.error
+	{ border: 2px solid #955
+	; padding: 5px
+	; color: #200
+	; background-color: #F99
+	}
+	
+	form .error
+	{ border:none
+	; padding:4px
+	; color: #200
+	}
+}
+
+@media screen 
+{
+	body
+	{ padding: 12px 12px 12px 12px
+	; position:relative
+	}
+}
+
+/****************** PAGE SELECTION MENU ******************/
+@media screen 
+{
+	ul.PageMenu
+	{ list-style-type:none
+	; padding:0
+	; font-size:12px
+	}
+	
+	ul.PageMenu ul
+	{ padding-left: 2em
+	}
+	
+	ul.PageMenu > li > p
+	{ font-size:14px
+	; font-weight:bold
+	}
+	
+	ul.PageMenu > li > a
+	{ width:45ex
+	}
+	
+	ul.PageSel
+	{ list-style-type:none
+	; margin:0
+	; padding:0
+	}
+	
+	ul.PageSel li
+	{ border-bottom: 1px solid #999
+	; margin:0
+	; padding:0
+	; width:30em
+	; height:2em
+	}
+	
+	ul.delete ul.PageSel li, ul.PageSel.delete li
+	{ width:40em
+	; position: relative
+	}
+	
+	ul.PageSel li:last-child
+	{ border: none
+	}
+	
+	ul.PageSel a, ul.PageMenu a
+	{ text-decoration:none
+	; color:black
+	; display:block
+	; padding:0.5em
+	; height:1em
+	}
+	
+	ul.delete ul.PageSel a, ul.delete.PageSel a
+	{ float:left
+	; width:70%
+	}
+	
+	ul.PageSel a.delete
+	{ font-style:italic
+	; color: #999
+	; position:absolute
+	; right:0
+	; width:auto !important
+	}
+	
+	ul.PageSel a:hover, ul.PageMenu a:hover
+	{ color: #FFF
+	; background-color:#333
+	}
+}
+
+/********************************************************************************************
+ * form definition
+ ********************************************************************************************/
+/******** form blocks **********/
+label
+{ display:block;
+}
+
+.checkbox
+{ position:relative;
+}
+
+.checkbox label
+{ position:absolute
+; left:25px
+; top:3px
+}
+
+*[disabled].fixed
+{ color: black /* do not grey out disabled elements which are disabled because they
+                * shall not be modified, whilst removal is still possible */
+}
+
+/* fieldset */
+fieldset
+{ border: 1px solid black
+; margin: 1em 0 0 0
+; padding: 32px 1em 1em 1em
+; position: relative /* to allow positioning of legend */
+; width: auto
+}
+
+fieldset legend
+{ width: auto
+; position: absolute
+; top: -1px
+; left: -1px
+; right: -1px
+; padding: 5px
+; line-height: 14px
+; margin: 0
+; border: 1px solid black
+; font-weight: 900
+; color: #777
+}
+
+/* array groups */
+@media screen, print
+{  
+	form ul
+	{ list-style-type: none;
+	  display: table;
+	  padding:0;
+	  margin:0;
+	}
+	
+	form ul > li
+	{ display: table-row
+	}
+	
+	form ul > li > p, form ul > li > div
+	{ display: table-cell
+	; padding: 0 5px 5px 0
+	; margin:0
+	; vertical-align:top
+	}
+	
+	form ul > li > .label
+	{ font-size:120%
+	; padding:0.2em 15px 0 0
+	}
+	
+	form ul > li:first-child > .label
+	{ padding:1em 15px 0 0
+	}
+	
+	form ul label
+	{ display: none
+	}
+	
+	form ul li:first-child label, li.first_child label
+	{ display: block
+	}
+	
+	form ul li:first-child .checkbox label, li.first_child .checkbox label
+	{ position: static
+	}
+	
+	form li .checkbox
+	{ width: 6em
+	; text-align:center
+	}
+}
+
+/* input style */
+ 
+form input
+{ padding: 1px
+; line-height: 2.1
+}
+
+form select
+{ line-height: 2.1
+}
+
+input[type='number'], 
+input[type='checkbox'],
+input[type='date'],
+input[type='time'],
+input[type='file']
+{ width: auto
+}
+
+input.InputYear
+{ width: 6ex
+}
+
+@media screen
+{
+  input[type='text'],
+  input[type='email']
+  { max-width: 20em
+  }
+}
+
+/*******
+ * nav
+ */
+nav
+{
+	border-top: 1px solid black;
+	margin-top: 24px;
+} 
+
+nav ul, nav li
+{
+	padding: 0;
+	margin:0;
+}
+
+nav ul
+{
+	display: flex	
+}
+
+nav li
+{
+	display: block;
+}
+
+nav a
+{
+	padding: 1ex 2ex;
+	margin: 0;
+	display: block;
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	border-left: 1px solid black;
+}
+
+nav a:hover
+{
+	color: white;
+	background-color:black;
+}

@@ -1,0 +1,3 @@
+[submodule "dbfe"]
+	path = dbfe
+	url = git@github.com:getoma/dbfe.git
