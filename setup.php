@@ -80,12 +80,12 @@ CREATE TABLE IF NOT EXISTS `Uploads` (
 
 
 ALTER TABLE `Tournament`
-  ADD CONSTRAINT `Tournament_ibfk_1` FOREIGN KEY (`ModeID`) REFERENCES `TournamentMode` (`ModeID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `Tournament_ibfk_2` FOREIGN KEY (`Announcement`) REFERENCES `Uploads` (`Uploads_ID`) ON DELETE SET NULL;
+  ADD CONSTRAINT `Tournament_ibfk_1` FOREIGN KEY if not exists (`ModeID`) REFERENCES `TournamentMode` (`ModeID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `Tournament_ibfk_2` FOREIGN KEY if not exists (`Announcement`) REFERENCES `Uploads` (`Uploads_ID`) ON DELETE SET NULL;
 
 ALTER TABLE `TournamentRankings`
-  ADD CONSTRAINT `TournamentRankings_ibfk_1` FOREIGN KEY (`MemberID`) REFERENCES `Member` (`MemberID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `TournamentRankings_ibfk_2` FOREIGN KEY (`TournamentID`) REFERENCES `Tournament` (`TournamentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `TournamentRankings_ibfk_1` FOREIGN KEY if not exists (`MemberID`) REFERENCES `Member` (`MemberID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `TournamentRankings_ibfk_2` FOREIGN KEY if not exists (`TournamentID`) REFERENCES `Tournament` (`TournamentID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 MYSQL;
 
@@ -96,18 +96,15 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 try
 { 
-   $pdo->beginTransaction();
    foreach( preg_split("/\n\n+/", $setup_code) as $stmt )
    {
       $pdo->exec($stmt);
    }
-   $pdo->commit();
    print("setup done!");
 }
 catch( \PDOException $e )
 {
-   $pdo->rollBack();
-   print "error: " . $pdo->errorInfo()[2];
+    print "error: " . $e->getMessage() . " - " . $pdo->errorInfo()[2];   
 }
 
 
